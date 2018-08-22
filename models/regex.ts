@@ -1,0 +1,12 @@
+export const REGEX_MATCH_POINTER = /#\w+/gi;
+export const REGEX_MATCH_COMMAND = /@\w+(?!\S)/gi;
+export const REGEX_MATCH_PARENT = /\^\w+/gi;
+export const REGEX_HAS_ARGS = /\((.+?)\)/gi;
+export const REGEX_MATCH_TYPE_HAS_ARGS = /(@|#|\^|&)\w+\((.+?)\)(?!\S)/gi;
+export const REGEX_MATCH_TYPE = /(@|#|\^|&)\w+(?!\S)/gi;
+export const REGEX_PULL_NAME = /(@|#|\^|&)\w+/gi;
+export const REGEX_START_BRACKET = '(';
+export const REGEX_COMMA = ',';
+export const REGEX_ARGS_CONTENT = /(\(|\)|\'|\")/gi;
+export const REGEX_MATCH_NUMBER_ONLY = /^[0-9]+$/gi;
+export const REGEX_SUBCOMMANDS = /(#\w+|@\w+|^\w+)/gi;

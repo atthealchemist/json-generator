@@ -1,0 +1,12 @@
+{
+  "@repeat(hotels, 10, 15)": {
+    "Hotelname": "@company",
+    "Photo": "http://placehold.it/32x32",
+    "Address": {
+      "lat": "@coordinate",
+      "lon": "@coordinate"
+    },
+    "Ratings": "@integer(1, 5)",
+    "Price": "@price(USD)"
+  }
+}

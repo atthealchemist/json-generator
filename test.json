@@ -1,0 +1,50 @@
+{
+  "id": "@index",
+  "firstName": "@firstName",
+  "surName": "@surName",
+  "fullName": "#firstName fon #surName",
+  "contacts": {
+    "forId": "^id",
+    "forName": "^fullName",
+    "tags": "@array(lorem, ipsum, dolor, sit, amet)",
+    "rand": "@random('fuck you bitch', 'comma value', 'lol') this",
+    "children": "@array(@fullName, @fullName)",
+    "company": "@company",
+    "website": "@website",
+    "founded": "@dateTime(YYYYMMDD)",
+    "email": "@email(lorem, att)",
+    "phone": "@phone"
+  },
+  "__HIDDEN": {
+    "fock": "#firstName",
+    "you": "@surName"
+  },
+  "@repeat(children, 1, 5)": [
+    {
+      "id": "@index",
+      "name": "@firstName"
+    }
+  ],
+  "functions": {
+
+    "airport": {
+      "airportCode": "@airportCode",
+      "airportName": "@airportName"
+    },
+    "country": {
+      "countryCode": "@countryCode",
+      "countryName": "@countryName"
+    },
+    "address": {
+      "city": "@city",
+      "street": "@street",
+      "house": "@house"
+    },
+    "coordinates": {
+      "lat": "@coordinate",
+      "lon": "@coordinate"
+    },
+    "rating": "@number(0, 1)",
+    "price": "@price(USD)"
+  }
+}

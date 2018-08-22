@@ -1,0 +1,196 @@
+<html>
+<head>
+
+  <title>typescript-3pvfbh</title>  
+</head>
+<body>
+<section>
+	<details>
+    <summary>Usage</summary>
+		<dl>
+			<dt>#attributeKey</dt>
+			<dd>
+				pointer to object value by key attributeKey
+				<p>
+          Example:
+					<br>
+					<code>
+{
+  "name": "Allen Heath",
+  "title": "Mister #name"
+}
+          </code>
+					<br> will translated into: <br>
+					<code>
+{
+ "name": "Allen Heath",
+ "title": "Mister Allen Heath"
+}
+          </code>
+				</p>
+			</dd>
+      <dt>@functionName</dt>
+			<dd>
+				calling method functionName<br>
+        <details>
+          <summary>List of supported methods</summary>
+          <ul>
+            <li>@index : number - generates index value</li>
+            <li>@firstName : string - generates random first name</li>
+            <li>@surName (alias @lastName) : string - generates random sur name</li>
+            <li>@array(fox, dog, cat) : array - generates array of sended arguments</li>
+            <li>@random : string - give random item of sended args</li>
+          </ul>
+          
+        </details>
+				<p>
+          Example:
+					<br>
+					<code>
+{
+ "firstName": "@firstName",
+ "animal": "@random('dog','cat','turtle')"
+}
+          </code>
+					<br> will translated into: <br>
+					<code>
+{
+ "firstName": "Annabel",
+ "animal": "cat"
+}
+          </code>
+				</p>
+			</dd>
+			<dt>^parentKey</dt>
+			<dd>
+				get value of parent object by key
+				<p>
+          Example:
+					<br>
+					<code>
+{
+  "id": "@index",
+  "name": "Allen Heath",
+  "title": "Mister #name"
+  "contacts": {
+    "forId": "^id"
+  }
+}
+          </code>
+					<br> will translated into: <br>
+					<code>
+{
+  "id": 256,
+  "name": "Allen Heath",
+  "title": "Mister Allen Heath",
+  "contacts": {
+    "forId": 256
+  }
+}
+          </code>
+				</p>
+			</dd>
+      <dt>__HIDDENOBJECT</dt>
+			<dd>
+				hides object from output, but can access all data of this object
+				<p>
+          Example:
+					<br>
+					<code>
+{
+  "id": "@index",
+  "name": "Allen Heath",
+  "title": "Mister #name",
+  "contacts": {
+    "forId": "^id"
+  }
+  "__HIDDEN": {
+    "child": "Satoko"
+  },
+  "possibleChildName": "#__HIDDEN.child"
+}
+          </code>
+					<br> will translated into: <br>
+					<code>
+{
+  "id": 256,
+  "name": "Allen Heath",
+  "title": "Mister Allen Heath",
+  "contacts": {
+     "forId": 256
+  },
+  "possibleChildName": "Satoko"
+}
+          </code>
+				</p>
+			</dd>
+      <dt>@repeat(arrayName, start, end)</dt>
+			<dd>
+				Generates array with random count between start and end
+				<p>
+          Example:
+					<br>
+					<code>
+{
+  "id": "@index",
+  "name": "Allen Heath",
+  "title": "Mister #name",
+  "contacts": {
+    "forId": "^id"
+  }
+  "__HIDDEN": {
+    "child": "Satoko"
+  },
+  "@repeat(children, 1, 3)": [
+    {
+      "id": "@index",
+      "name": "@firstName",
+      "father": "^name"
+    }
+  ]
+}
+          </code>
+					<br> will translated into: <br>
+					<code>
+            {
+              "id": 256,
+              "name": "Allen Heath",
+              "title": "Mister Allen Heath",
+              "contacts": {
+                "forId": 256
+              },
+              "possibleChildName": "Satoko",
+              "children": [
+                {
+                  "id": 0,
+                  "name": "Satoko",
+                  "father": "Allen Heath"
+                },
+                {
+                  "id": 1,
+                  "name": "Sid",
+                  "father": "Allen Heath"
+                }
+              ]
+            }
+          </code>
+				</p>
+			</dd>
+		</dl>
+
+
+	</details>
+</section>
+<hr>
+<div id="app">
+	<div class="panel-left">
+		<h1>JSON template</h1>
+		<textarea id="template" cols="90" rows="20"></textarea>
+	</div>
+	<div class="panel-right">
+		<h1>Result</h1>
+		<textarea name="" id="result" cols="90" rows="20" readonly></textarea>
+	</div>
+</div>
+</body>
+</html>
