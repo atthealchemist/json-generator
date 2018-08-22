@@ -7,17 +7,14 @@ import { ObjectType } from "./types";
 import {
   REGEX_MATCH_COMMAND,
   REGEX_MATCH_POINTER,
-  REGEX_MATCH_PARENT,
-  REGEX_MATCH_NUMBER_ONLY,
-  REGEX_MATCH_TYPE_HAS_ARGS
-} from "./regex";
+  REGEX_MATCH_PARENT} from "./regex";
 
 export default class JsonGenerator {
 
   commands: Commands = new Commands();
   parser: Parser = new Parser();
 
-  private processJson(json, parent?) {
+  private processJson(json: any, parent?: any) {
     let item;
 
     for (let key in json) {
@@ -28,7 +25,6 @@ export default class JsonGenerator {
       switch (this.parser.getObjectType(key)) {
 
         case ObjectType.HIDDEN:
-          let hiddenKey = key;
           console.log('ProcessJson.ObjectType::HIDDEN.hiddenKey', key);
           delete json[key];
           break;
@@ -38,7 +34,6 @@ export default class JsonGenerator {
           let command = this.parser.parseCommand(key);
           console.log('ProcessJson.ObjectType::REPEAT.command', command);
 
-          let resultArray = [];
 
           let arrayKey = command.args[0];
           let start = parseInt(command.args[1]);
@@ -124,7 +119,6 @@ export default class JsonGenerator {
           console.log("ProcessJson.ObjectType::PARENT.value", json[key]);
           json[key] = json[key].replace(REGEX_MATCH_PARENT, mom => {
             let parentKey = mom.replace('^', '');
-            let parentVal = parent[parentKey];
             console.log('ProcessJson.ObjectType::PARENT.parentKey', parentKey);
             console.log('ProcessJson.ObjectType::PARENT.parentVal', parent[parentKey]);
             return parent[parentKey];

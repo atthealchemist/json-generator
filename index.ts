@@ -1,4 +1,4 @@
-// Import stylesheets
+// Import stylesheet
 import './style.css';
 
 import JsonGenerator from './models/generator';

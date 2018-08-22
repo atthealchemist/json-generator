@@ -1,10 +1,13 @@
 {
-  "name": "typescript-3pvfbh",
+  "name": "json-generator",
   "description": "",
-  "homepage": "https://stackblitz.com/edit/typescript-3pvfbh",
+  "homepage": "https://github.com/atthealchemist/json-generator",
   "dependencies": {
+    "@types/moment": "^2.13.0",
+    "@types/node": "^10.7.1",
+    "moment": "2.22.2",
     "msk": "1.0.3",
-    "moment": "2.22.2"
+    "types-installer": "^1.4.0"
   },
   "version": "1.0.0"
 }
