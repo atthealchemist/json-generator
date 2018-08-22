@@ -3,13 +3,10 @@ import './style.css';
 
 import JsonGenerator from './models/generator';
 // import testJson from './test.json';
-import testJson from './hotel.json';
+import testJson from './test.json';
 
-// Write TypeScript code!
-const appDiv: HTMLElement = document.getElementById('app');
-
-const template: HTMLElement = document.getElementById('template');
-const result: HTMLElement = document.getElementById('result');
+const template: any | HTMLElement = document.getElementById('template');
+const result: any | HTMLElement = document.getElementById('result');
 
 console.log(testJson);
 template.innerHTML = JSON.stringify(testJson, null, 2);

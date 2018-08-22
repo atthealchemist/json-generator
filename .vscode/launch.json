@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}/src"
+        },
+        {
+            "args": [
+                
+            ],
+            "cwd": "${workspaceRoot}",
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "runtimeExecutable": null,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "name": "DEBUG",
+            "program": "${workspaceRoot}/src/index.ts",
+            "preLaunchTask": "tsc:build",
+            "outFiles": [
+                "${workspaceRoot}/bin/*.js"
+            ],
+            "console": "internalConsole"
+        }, 
+        {
+            "name": "Attach",
+            "type": "node",
+            "request":"attach",
+            "port": 6060
+        }
+    ]
+}

@@ -111,14 +111,14 @@ export default class Parser {
   parseCommand(cmd: string) {
 
     let commandObject = new CommandObject();
-    commandObject.type = this.getObjectType(cmd);
+    commandObject.type = <ObjectType> this.getObjectType(cmd);
 
     switch (commandObject.type) {
       case ObjectType.COMMAND:
       case ObjectType.POINTER:
       case ObjectType.PARENT:
       case ObjectType.HIDDEN:
-        commandObject.name = this.parseName(cmd);
+        commandObject.name = <any> this.parseName(cmd);
         commandObject.hasArgs = this.hasArgs(cmd);
         commandObject.args = this.parseArgs(cmd);
         commandObject.manyCommands = this.hasSubCommands(cmd);
@@ -134,7 +134,7 @@ export default class Parser {
         commandObject.name = 'array@' + commandObject.origin;
         break;
       case ObjectType.REPEAT:
-        commandObject.name = this.parseName(cmd);
+        commandObject.name = <any> this.parseName(cmd);
         commandObject.hasArgs = this.hasArgs(cmd);
         commandObject.args = this.parseArgs(cmd);
         break;

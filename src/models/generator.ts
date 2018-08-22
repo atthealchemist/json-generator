@@ -47,13 +47,16 @@ export default class JsonGenerator {
           json[arrayKey] = [];
 
           for (let i = 0; i < repeatCount; i++) {
-            this.processJson(json[key]);
             json[arrayKey].push(json[key]);
           }
 
           console.log("ProcessJson.ObjectType::REPEAT.json[arrayKey]", json[arrayKey]);
           
           delete json[key];
+
+          for(let item of json[arrayKey]) {
+            this.processJson(item);
+          }
 
           break;
 
@@ -105,8 +108,8 @@ export default class JsonGenerator {
           console.log("ProcessJson.ObjectType::POINTER.value", json[key]);
           let matches = json[key].match(REGEX_MATCH_POINTER);
           if (matches && matches.length > 0) {
-            json[key] = json[key].replace(REGEX_MATCH_POINTER, pointer => {
-              let pointerKey = this.parser.parseName(pointer);
+            json[key] = json[key].replace(REGEX_MATCH_POINTER, (pointer: string) => {
+              let pointerKey : any = this.parser.parseName(pointer);
               console.log('ProcessJson.ObjectType::POINTER.replace.pointerKey', pointerKey);
               return json[pointerKey];
             });
@@ -117,7 +120,7 @@ export default class JsonGenerator {
 
         case ObjectType.PARENT:
           console.log("ProcessJson.ObjectType::PARENT.value", json[key]);
-          json[key] = json[key].replace(REGEX_MATCH_PARENT, mom => {
+          json[key] = json[key].replace(REGEX_MATCH_PARENT, (mom: string) => {
             let parentKey = mom.replace('^', '');
             console.log('ProcessJson.ObjectType::PARENT.parentKey', parentKey);
             console.log('ProcessJson.ObjectType::PARENT.parentVal', parent[parentKey]);

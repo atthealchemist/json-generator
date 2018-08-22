@@ -9,5 +9,8 @@
     "msk": "1.0.3",
     "types-installer": "^1.4.0"
   },
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "devDependencies": {
+    "typescript": "^3.0.1"
+  }
 }
