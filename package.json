@@ -1,0 +1,46 @@
+{
+  "name": "jsongeneration",
+  "displayName": "JsonGeneration",
+  "description": "Generate stub json data using templates and so on",
+  "version": "0.0.1",
+  "publisher": "atthealchemist",
+  "engines": {
+    "vscode": "^1.25.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.generateJson"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "title": "JG: Generate JSON",
+        "command": "extension.generateJson"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "fixallshit": "npm clean cache --force && rm -rf node_modules/ && npm install"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^7.0.43",
+    "cross-env": "^5.2.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.9.2",
+    "vscode": "^1.1.6"
+  },
+  "dependencies": {
+    "@types/moment": "^2.13.0",
+    "moment": "^2.22.2",
+    "msk": "^1.0.3"
+  }
+}
