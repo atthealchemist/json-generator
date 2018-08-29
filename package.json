@@ -11,7 +11,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.generateJson"
+    "onCommand:extension.generateJson",
+    "onLanguage:json"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -39,8 +40,8 @@
     "vscode": "^1.1.6"
   },
   "dependencies": {
-    "@types/moment": "^2.13.0",
-    "moment": "^2.22.2",
-    "msk": "^1.0.3"
+    "@types/typescript": "^2.0.0",
+    "date-time-js": "^1.0.6",
+    "typescript": "^3.0.1"
   }
 }

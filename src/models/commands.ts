@@ -1,18 +1,6 @@
 // import msk from 'msk';
-import moment from 'moment';
+import { DateTime } from 'date-time-js';
 
-// import countriesJson from "../assets/countries.json";
-import airportsJson from "../assets/airports.json";
-// import languagesJson from "../assets/cultures.json";
-import firstNamesJson from "../assets/firstNames.json";
-import surNamesJson from "../assets/surNames.json";
-import countriesJson from "../assets/countries.json";
-import addressJson from "../assets/addresses.json";
-import phoneCodesJson from "../assets/phonecodes.json";
-// import citiesJson from "../assets/cities.json";
-// import addressJson from "../assets/addresses.json";
-import domainZoneJson from "../assets/zones.json";
-import companiesJson from "../assets/companies.json";
 
 export default class Commands {
   //  hideObject(): void;
@@ -71,7 +59,7 @@ export default class Commands {
   firstName(): string {
     let firstNames: string[] = [];
 
-    firstNamesJson.forEach(element => {
+    Assets.firstNamesJson.forEach(element => {
       firstNames.push(element);
     });
 
@@ -81,7 +69,7 @@ export default class Commands {
   lastName(): string {
     let surNames: string[] = [];
 
-    surNamesJson.forEach(element => {
+    Assets.surNamesJson.forEach(element => {
       surNames.push(element);
     });
 
@@ -99,7 +87,7 @@ export default class Commands {
   company(): string {
     let companies: string[] = [];
 
-    companiesJson.forEach(element => {
+    Assets.companiesJson.forEach(element => {
       companies.push(element);
     });
 
@@ -113,7 +101,7 @@ export default class Commands {
   country(): string {
     let countryNames: string[] = [];
 
-    countriesJson.forEach(element => {
+    Assets.countriesJson.forEach(element => {
       countryNames.push(element.name);
     });
 
@@ -123,7 +111,7 @@ export default class Commands {
   cities(): string {
     let cities: string[] = [];
 
-    addressJson.forEach(element => {
+    Assets.addressJson.forEach(element => {
       cities.push(element.city);
     });
 
@@ -145,7 +133,7 @@ export default class Commands {
   streetHouse(): string {
     let addresses: string[] = [];
 
-    addressJson.forEach(element => {
+    Assets.addressJson.forEach(element => {
       addresses.push(element.address);
     });
 
@@ -163,7 +151,7 @@ export default class Commands {
   state(): string {
     let states: string[] = [];
 
-    addressJson.forEach(element => {
+    Assets.addressJson.forEach(element => {
       states.push(element.state);
     });
 
@@ -181,7 +169,7 @@ export default class Commands {
   countryCode(): string {
     let countryCodes: string[] = [];
 
-    countriesJson.forEach(element => {
+    Assets.countriesJson.forEach(element => {
       countryCodes.push(element.code);
     });
 
@@ -191,7 +179,7 @@ export default class Commands {
   airportName(): string {
     let airportNames: string[] = [];
 
-    airportsJson.forEach(element => {
+    Assets.airportsJson.forEach(element => {
       airportNames.push(element.name);
     });
 
@@ -201,7 +189,7 @@ export default class Commands {
   iataCode(): string {
     let airportCodes: string[] = [];
 
-    airportsJson.forEach(element => {
+    Assets.airportsJson.forEach(element => {
       airportCodes.push(element.code);
     });
 
@@ -224,10 +212,7 @@ export default class Commands {
   }
 
   dateTime(format?: string): string {
-    if (format) {
-      return moment(new Date(2018, 0, 1)).format(format);
-    }
-    return moment(new Date(2018, 0, 1)).format("YYYY-MM-DD HH:mm:ss");
+      return (format) ? new DateTime(2018, 0, 1).format(format) : new DateTime(2018, 0, 1).format("YYYY-MM-DD HH:mm:ss");
   }
 
   domainZone(): string {
