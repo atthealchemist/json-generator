@@ -1,13 +1,13 @@
-import countriesJson from "./assets/countries.json";
-import airportsJson from "./assets/airports.json";
-import languagesJson from "./assets/cultures.json";
-import firstNamesJson from "./assets/firstNames.json";
-import surNamesJson from "./assets/surNames.json";
-import addressJson from "./assets/addresses.json";
-import phoneCodesJson from "./assets/phonecodes.json";
-import citiesJson from "./assets/cities.json";
-import domainZoneJson from "./assets/zones.json";
-import companiesJson from "./assets/companies.json";
+import countriesJson from "@Assets/countries.json";
+import airportsJson from "@Assets/airports.json";
+import languagesJson from "@Assets/cultures.json";
+import firstNamesJson from "@Assets/firstNames.json";
+import surNamesJson from "@Assets/surNames.json";
+import addressJson from "@Assets/addresses.json";
+import phoneCodesJson from "@Assets/phonecodes.json";
+import citiesJson from "@Assets/cities.json";
+import domainZoneJson from "@Assets/domainzones.json";
+import companiesJson from "@Assets/companies.json";
 
 export const Assets = {
 

@@ -11,30 +11,33 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.generateJson",
+    "onCommand:jsongeneration.generate",
     "onLanguage:json"
   ],
-  "main": "./out/src/extension",
+  "main": "./dist/extension",
   "contributes": {
     "commands": [
       {
         "title": "JG: Generate JSON",
-        "command": "extension.generateJson"
+        "command": "jsongeneration.generate"
       }
     ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "compile": "gulp",
+    "watch": "gulp",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "npm run compile && node ./node_modules/vscode/bin/test",
-    "fixallshit": "npm clean cache --force && rm -rf node_modules/ && npm install"
+    "fixallshit": "npm clean cache --force && rm -rf node_modules/ && npm install",
+    "lint": "tslint src/*.ts -t verbose"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
     "cross-env": "^5.2.0",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^5.0.0-alpha.3",
     "tslint": "^5.8.0",
     "typescript": "^2.9.2",
     "vscode": "^1.1.6"
@@ -42,6 +45,7 @@
   "dependencies": {
     "@types/typescript": "^2.0.0",
     "date-time-js": "^1.0.6",
+    "moment": "^2.22.2",
     "typescript": "^3.0.1"
   }
 }

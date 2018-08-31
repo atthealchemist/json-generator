@@ -1,4 +1,4 @@
-import {window, commands, Disposable, ExtensionContext} from "vscode";
+import {commands, ExtensionContext} from "vscode";
 import JsonGeneratorUI from "./models/generatorUi";
 
 export function activate(context: ExtensionContext) {
@@ -6,10 +6,7 @@ export function activate(context: ExtensionContext) {
   let ui = new JsonGeneratorUI();
 
   let disposable = commands.registerCommand(
-    "extension.generateJson",
-    () => {
-      ui.startGeneration();
-    }
+    "jsongeneration.generate", () =>  ui.startGeneration()
   );
 
   context.subscriptions.push(ui);

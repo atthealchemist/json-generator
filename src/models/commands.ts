@@ -1,5 +1,16 @@
 // import msk from 'msk';
-import { DateTime } from 'date-time-js';
+import moment from 'moment';
+
+import countriesJson from "../assets/countries.json";
+import airportsJson from "../assets/airports.json";
+import languagesJson from "../assets/cultures.json";
+import firstNamesJson from "../assets/firstNames.json";
+import surNamesJson from "../assets/surNames.json";
+import addressJson from "../assets/addresses.json";
+import phoneCodesJson from "../assets/phonecodes.json";
+import citiesJson from "../assets/cities.json";
+import domainZoneJson from "../assets/domainzones.json";
+import companiesJson from "../assets/companies.json";
 
 
 export default class Commands {
@@ -32,7 +43,7 @@ export default class Commands {
     return index++;
   }
 
-  array(...values): any[] {
+  array(...values: any[]): any[] {
     let resArr = [];
     for (let val of values) {
       if(val.indexOf('@') >= 0) {
@@ -51,7 +62,7 @@ export default class Commands {
     let currencies = {
       "USD": "$",
       "EUR": "€"
-    }
+    };
 
     return `${this.number(0, 1000)}${currencies[cur]}`;
   }
@@ -59,7 +70,7 @@ export default class Commands {
   firstName(): string {
     let firstNames: string[] = [];
 
-    Assets.firstNamesJson.forEach(element => {
+    firstNamesJson.forEach(element => {
       firstNames.push(element);
     });
 
@@ -69,7 +80,7 @@ export default class Commands {
   lastName(): string {
     let surNames: string[] = [];
 
-    Assets.surNamesJson.forEach(element => {
+    surNamesJson.forEach(element => {
       surNames.push(element);
     });
 
@@ -87,8 +98,8 @@ export default class Commands {
   company(): string {
     let companies: string[] = [];
 
-    Assets.companiesJson.forEach(element => {
-      companies.push(element);
+    companiesJson.forEach(element => {
+      companies.push(element.name);
     });
 
     return companies[this.number(0, companies.length - 1)];
@@ -101,7 +112,7 @@ export default class Commands {
   country(): string {
     let countryNames: string[] = [];
 
-    Assets.countriesJson.forEach(element => {
+    countriesJson.forEach(element => {
       countryNames.push(element.name);
     });
 
@@ -111,7 +122,7 @@ export default class Commands {
   cities(): string {
     let cities: string[] = [];
 
-    Assets.addressJson.forEach(element => {
+    addressJson.forEach(element => {
       cities.push(element.city);
     });
 
@@ -133,7 +144,7 @@ export default class Commands {
   streetHouse(): string {
     let addresses: string[] = [];
 
-    Assets.addressJson.forEach(element => {
+    addressJson.forEach(element => {
       addresses.push(element.address);
     });
 
@@ -151,7 +162,7 @@ export default class Commands {
   state(): string {
     let states: string[] = [];
 
-    Assets.addressJson.forEach(element => {
+    addressJson.forEach(element => {
       states.push(element.state);
     });
 
@@ -169,7 +180,7 @@ export default class Commands {
   countryCode(): string {
     let countryCodes: string[] = [];
 
-    Assets.countriesJson.forEach(element => {
+    countriesJson.forEach(element => {
       countryCodes.push(element.code);
     });
 
@@ -179,7 +190,7 @@ export default class Commands {
   airportName(): string {
     let airportNames: string[] = [];
 
-    Assets.airportsJson.forEach(element => {
+    airportsJson.forEach(element => {
       airportNames.push(element.name);
     });
 
@@ -189,7 +200,7 @@ export default class Commands {
   iataCode(): string {
     let airportCodes: string[] = [];
 
-    Assets.airportsJson.forEach(element => {
+    airportsJson.forEach(element => {
       airportCodes.push(element.code);
     });
 
@@ -212,14 +223,14 @@ export default class Commands {
   }
 
   dateTime(format?: string): string {
-      return (format) ? new DateTime(2018, 0, 1).format(format) : new DateTime(2018, 0, 1).format("YYYY-MM-DD HH:mm:ss");
+      return (format) ? moment().format(format) : moment().format("YYYY-MM-DD HH:mm:ss");
   }
 
   domainZone(): string {
     let domains: string[] = [];
 
     domainZoneJson.forEach(element => {
-      domains.push(element);
+      domains.push(element.domain);
     });
 
     return domains[this.number(0, domains.length - 1)];
@@ -255,7 +266,7 @@ export default class Commands {
     let phoneCodes: string[] = [];
 
     phoneCodesJson.forEach(element => {
-      phoneCodes.push(element);
+      phoneCodes.push(element.dial_code);
     });
 
     return phoneCodes[this.number(0, phoneCodes.length - 1)];

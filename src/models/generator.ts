@@ -136,6 +136,7 @@ export default class JsonGenerator {
           break;
 
         case ObjectType.PARENT:
+          console.log("ProcessJson.ObjectType::PARENT.parent", parent);
           console.log("ProcessJson.ObjectType::PARENT.value", json[key]);
           json[key] = json[key].replace(REGEX_MATCH_PARENT, (mom: string) => {
             let parentKey = mom.replace("^", "");
